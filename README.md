@@ -1,4 +1,4 @@
-# Festigo---Campus-Event-Registration-Portal
+# Festigo - Campus Event Registration Portal
 Festigo is a modern, interactive **campus event management web application** that allows students to explore events, register for them, and manage their participation seamlessly. Built using **HTML, CSS, and JavaScript**, it focuses on simplicity, responsiveness, and a smooth user experience.
 
 # Features
