@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Festigo - Campus Event Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo">Festigo</div>
+  <span id="userDisplay" style="font-weight:500;"></span>
+  <div class="header-buttons">
+    <button class="login" onclick="openLogin()">Login</button>
+    <button class="login" onclick="openSignUp()">Sign Up</button>
+    <button class="login" onclick="logoutUser()">Logout</button>
+  </div>
+</header>
+<div id="landingPage" class="landing">
+  <h1>Welcome to Festigo</h1>
+  <p class="tagline">Your campus, your events, your vibe.</p>
+  <div class="landing-cards">
+    <div class="landing-card">
+      <h3>About Festigo</h3>
+      <p>All-in-one campus event platform.</p>
+    </div>
+    <div class="landing-card">
+      <h3>Explore Events</h3>
+      <p>Discover amazing events.</p>
+    </div>
+    <div class="landing-card">
+      <h3>Easy Registration</h3>
+      <p>Register in seconds.</p>
+    </div>
+    <div class="landing-card">
+      <h3>Why Join?</h3>
+      <p>Showcase talent & connect.</p>
+    </div>
+  </div>
+</div>
+<div id="mainContent" style="display:none;">
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('events', this)">Events</div>
+    <div class="tab" onclick="showTab('registered', this)">Registered Events</div>
+  </div>
+  <div class="search-section">
+    <input class="search-bar" id="search" placeholder="Search events..." onkeyup="applyFilters()">
+    <div class="filter-container">
+      <button class="filter-toggle" onclick="toggleFilters()">Filters</button>
+      <div class="filter-box" id="filterBox">
+        <label>Start Date</label>
+        <input type="date" id="startDate">
+        <label>End Date</label>
+        <input type="date" id="endDate">
+        <label>Time</label>
+        <select id="timeFilter">
+          <option value="">All</option>
+          <option value="morning">Morning</option>
+          <option value="afternoon">Afternoon</option>
+          <option value="evening">Evening</option>
+        </select>
+        <label>Team Size</label>
+        <select id="teamSizeFilter">
+          <option value="">Any</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4+</option>
+        </select>
+        <label>Category</label>
+        <select id="categoryFilter">
+          <option value="">All</option>
+          <option value="tech">Tech</option>
+          <option value="cultural">Cultural</option>
+          <option value="creative">Creative</option>
+        </select>
+        <div class="filter-buttons">
+          <button onclick="applyFilters()">Apply</button>
+          <button onclick="clearFilters()">Clear</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="events" id="events">
+    <div class="card" data-category="tech" data-size="4" data-time="9">
+  <h3>CodeStorm Hackathon</h3>
+  <p>24-hour coding challenge.</p>
+  <p>Date: April 10</p>
+  <p>Time: 9:00 AM</p>
+  <p>Group Size: 4</p>
+  <button class="register" onclick="openForm('CodeStorm Hackathon','Teams build innovative software solutions within 24 hours.')">Register</button>
+</div>
+<div class="card" data-category="cultural" data-size="6" data-time="16">
+  <h3>Royale Dance Battle</h3>
+  <p>Inter-college dance showdown.</p>
+  <p>Date: April 10</p>
+  <p>Time: 4:00 PM</p>
+  <p>Group Size: 6</p>
+  <button class="register" onclick="openForm('Royale Dance Battle','Dance crews compete in energetic choreography rounds.')">Register</button>
+</div>
+<div class="card" data-category="cultural" data-size="5" data-time="19">
+  <h3>EchoVerse Music Night</h3>
+  <p>Live band performances.</p>
+  <p>Date: April 10</p>
+  <p>Time: 7:00 PM</p>
+  <p>Group Size: 5</p>
+  <button class="register" onclick="openForm('EchoVerse Music Night','Students showcase musical talents in a vibrant concert.')">Register</button>
+</div>
+<div class="card" data-category="creative" data-size="2" data-time="10">
+  <h3>Lens Legend Photography Quest</h3>
+  <p>Campus photo challenge.</p>
+  <p>Date: April 11</p>
+  <p>Time: 10:00 AM</p>
+  <p>Group Size: 2</p>
+  <button class="register" onclick="openForm('Lens Legend Photography Quest','Capture stunning campus moments creatively.')">Register</button>
+</div>
+<div class="card" data-category="tech" data-size="3" data-time="14">
+  <h3>Startup Spark Pitch Fest</h3>
+  <p>Startup idea pitching.</p>
+  <p>Date: April 11</p>
+  <p>Time: 2:00 PM</p>
+  <p>Group Size: 3</p>
+  <button class="register" onclick="openForm('Startup Spark Pitch Fest','Teams pitch innovative startup ideas to judges.')">Register</button>
+</div>
+<div class="card" data-category="tech" data-size="3" data-time="9">
+  <h3>Cyber Clash</h3>
+  <p>Cybersecurity challenge.</p>
+  <p>Date: April 12</p>
+  <p>Time: 9:30 AM</p>
+  <p>Group Size: 3</p>
+  <button class="register" onclick="openForm('Cyber Clash','Solve hacking puzzles in this cybersecurity contest.')">Register</button>
+</div>
+<div class="card" data-category="creative" data-size="2" data-time="13">
+  <h3>Creative Canvas Art Jam</h3>
+  <p>Creative art competition.</p>
+  <p>Date: April 12</p>
+  <p>Time: 1:00 PM</p>
+  <p>Group Size: 2</p>
+  <button class="register" onclick="openForm('Creative Canvas Art Jam','Artists create imaginative artworks in a timed challenge.')">Register</button>
+</div>
+<div class="card" data-category="tech" data-size="4" data-time="11">
+  <h3>Brain Blitz Quiz Arena</h3>
+  <p>Fast-paced quiz event.</p>
+  <p>Date: April 13</p>
+  <p>Time: 11:00 AM</p>
+  <p>Group Size: 4</p>
+  <button class="register" onclick="openForm('Brain Blitz Quiz Arena','Teams compete across science, tech and culture.')">Register</button>
+</div>
+  </div>
+  <div id="registered" class="events" style="display:none"></div>
+  <div id="emptyMessage" class="empty" style="display:none">No registered events now</div>
+</div>
+<div class="overlay" id="overlay">
+  <div class="form-box">
+    <h2 id="eventTitle"></h2>
+    <p class="desc" id="eventDesc"></p>
+    <input placeholder="Full Name">
+    <input placeholder="Email">
+    <input placeholder="Phone Number" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+    <input placeholder="Department">
+    <button onclick="submitRegistration()">Submit</button>
+    <button class="close" onclick="closeForm()">Close</button>
+  </div>
+</div>
+<div class="overlay" id="loginOverlay">
+  <div class="form-box">
+    <h2>Login</h2>
+    <input id="loginEmail" placeholder="Email">
+    <input id="loginPassword" type="password" placeholder="Password">
+    <button onclick="loginUser()">Login</button>
+    <button class="close" onclick="closeLogin()">Close</button>
+  </div>
+</div>
+<div class="overlay" id="signupOverlay">
+  <div class="form-box">
+    <h2>Sign Up</h2>
+    <input id="signupName" placeholder="Full Name">
+    <input id="signupEmail" placeholder="Email">
+    <input id="signupPassword" type="password" placeholder="Password">
+    <input id="signupPhone" placeholder="Phone Number" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+    <button onclick="submitSignUp()">Sign Up</button>
+    <button class="close" onclick="closeSignUp()">Close</button>
+  </div>
+</div>
+<footer>
+  <p class="copyright">© Festigo</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
